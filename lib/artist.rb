@@ -22,6 +22,17 @@ end
     @@all << self
   end
 
-  def self.find_or_create_by_name
+  def self.find_or_create_by_name(name)
+
   end
+
+  def self.find(name)
+    @@all.find {|artist| artist == name}
+  end
+
+  def self.create(name)
+    new_artist = Artist.new(name)
+    new_artist.save
+  end
+
 end
