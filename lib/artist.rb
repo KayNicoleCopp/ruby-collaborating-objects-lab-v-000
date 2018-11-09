@@ -23,16 +23,14 @@ end
   end
 
   def self.find_or_create_by_name(name)
-    
-  end
-
-  def self.find(name)
-    @@all.find {|artist| artist == name}
-  end
-
-  def self.create(name)
-    new_artist = Artist.new(name)
-    new_artist.save
+    found_artist = self.all.find {|artist| artist.name == name}
+    if found_artist
+      found_artist
+    else
+      new_artist = self.new(name)
+      new_artist.save
+      new_artist
+    end
   end
 
 end
